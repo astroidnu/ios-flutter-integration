@@ -7,10 +7,24 @@
 //
 
 import SwiftUI
+import Flutter
+
+let flutterEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngine
+let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            NavigationLink(destination: FlutterView()) {
+                    Text("Show me flutter module")
+            }
+        }
+    }
+}
+
+struct FlutterView : View {
+    var body : some View {
+        FlutterRepresentVC().navigationBarTitle("Flutter Module", displayMode: .inline)
     }
 }
 
